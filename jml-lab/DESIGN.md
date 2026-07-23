@@ -23,7 +23,6 @@ This lab automates the Joiner-Mover-Leaver identity lifecycle against an on-prem
 | Stage | FreeIPA objects touched | Notes |
 |---|---|---|
 | Joiner | Creates user record + adds to finance-analysts group| New hire persona |
-| Mover | Removes finance-analysts membership, adds it-support membership |
-Department transfer persona |
+| Mover | Removes finance-analysts membership, adds it-support membership | Department transfer persona |
 | Leaver | Disable user account + removes all group memberships | Termination persona |
 
