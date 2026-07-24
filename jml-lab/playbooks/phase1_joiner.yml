@@ -1,0 +1,39 @@
+---
+- name: JML Phase 1 - Joiner
+  hosts: localhost
+  connection: local
+  vars_files:
+    - ../vars/secrets.yml
+  vars:
+    persona_user: jellis
+    persona_first: Jordan
+    persona_last: Ellis
+    persona_group: finance-analysts
+  tasks:
+    - name: Ensure department group exists
+      community.general.ipa_group:
+        name: "{{ persona_group }}"
+        description: "Finance Analysts"
+        ipa_host: "{{ ipa_host }}"
+        ipa_user: "{{ ipa_user }}"
+        ipa_pass: "{{ ipa_pass }}"
+        state: present
+
+    - name: Create joiner user account
+      community.general.ipa_user:
+        name: "{{ persona_user }}"
+        givenname: "{{ persona_first }}"
+        sn: "{{ persona_last }}"
+        state: present
+        ipa_host: "{{ ipa_host }}"
+        ipa_user: "{{ ipa_user }}"
+        ipa_pass: "{{ ipa_pass }}"
+
+    - name: Add user to department group
+      community.general.ipa_group:
+        name: "{{ persona_group }}"
+        user: "{{ persona_user }}"
+        state: present
+        ipa_host: "{{ ipa_host }}"
+        ipa_user: "{{ ipa_user }}"
+        ipa_pass: "{{ ipa_pass }}"

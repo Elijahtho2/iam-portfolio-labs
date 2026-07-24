@@ -1,0 +1,31 @@
+---
+- name: Onboard new employee (Joiner)
+  hosts: freeipa
+  become: true
+  vars_files:
+    - ../vars/employees.yml
+  tasks:
+    - name: Create FreeIPA user account
+      ansible.builtin.command: >
+        ipa user-add {{ item.username }}
+        --first="{{ item.full_name.split(' ')[0] }}"
+        --last="{{ item.full_name.split(' ')[1] }}"
+        --password
+      loop: "{{ employees | selectattr('action', 'equalto', 'joiner' | list }}"
+      register: ipa_create
+      changed_when: "'Added user' in ipa_create.stdout"
+
+
+   - name: Add user to department group
+     ansible.builtin.command: >
+       ipa group-add-member {{ item.department }}
+       --users={{ item.username }}
+     loop: "{{ employees | selectattr('action', 'equalto', 'joiner') | list }}"
+
+
+   - name: Log the joiner action
+     ansible.builtin.lineinfile:
+       path: /var/log/jml-automation.log
+       line: "{{ ansible_data_time.iso8601 }} JOINER {{ item.username }} added to {{ item.department }}"
+       create: true
+     loop: "{{ employees | selectattr('action', 'equalto', 'joiner') | list }}"

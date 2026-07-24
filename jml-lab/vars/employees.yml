@@ -1,0 +1,5 @@
+employees:
+ - username: jsmith
+   full_name: "Jordan Smith"
+   department: finance
+   action: joiner
