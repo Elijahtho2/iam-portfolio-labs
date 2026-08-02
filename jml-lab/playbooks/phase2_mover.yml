@@ -1,0 +1,23 @@
+
+---
+- name: JML Phase 2 - Mover
+  hosts: localhost
+  connection: local
+  vars:
+    persona_user: jellis
+    old_group: finance-analysts
+    new_group: it-support
+  tasks:
+    - name: Remove user from old department group
+      ansible.builtin.command: >
+        ipa group-remove-member {{ old_group }} --users={{ persona_user }}
+      register: remove_result
+      changed_when: "'removed' in remove_result.stdout or remove_result.rc == 0"
+      failed_when: remove_result.rc not in [0, 1]
+
+    - name: Add user to new department group
+      ansible.builtin.command: >
+        ipa group-add-member {{ new_group }} --users={{ persona_user }}
+      register: add_result
+      changed_when: "'added' in add_result.stdout or add_result.rc == 0"
+      failed_when: add_result.rc not in [0, 1]
