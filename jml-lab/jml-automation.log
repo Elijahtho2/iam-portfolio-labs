@@ -1,0 +1,102 @@
+=== JML full lifecycle run: 2026-08-02T20:38:57-04:00 ===
+[2026-08-02T20:38:57-04:00] Starting JOINER
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+ERROR! Decryption failed (no vault secrets were found that could decrypt) on /home/elijah/iam-portfolio-labs/jml-lab/vars/secrets.yml
+[2026-08-02T20:38:58-04:00] JOINER complete
+[2026-08-02T20:38:58-04:00] Starting MOVER
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [JML Phase 2 - Mover] *****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Remove user from old department group] ***********************************
+changed: [localhost]
+
+TASK [Add user to new department group] ****************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[2026-08-02T20:39:05-04:00] MOVER complete
+[2026-08-02T20:39:05-04:00] Starting LEAVER
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [JML Phase 3 - Leaver] ****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Disable the user account] ************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["ipa", "user-disable", "jellis"], "delta": "0:00:00.849572", "end": "2026-08-02 20:39:10.109569", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-08-02 20:39:09.259997", "stderr": "ipa: ERROR: no such entry", "stderr_lines": ["ipa: ERROR: no such entry"], "stdout": "", "stdout_lines": []}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[2026-08-02T20:39:10-04:00] LEAVER complete - full lifecycle done
+=== JML full lifecycle run: 2026-08-02T20:58:33-04:00 ===
+[2026-08-02T20:58:33-04:00] Starting JOINER
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [JML Phase 1 - Joiner] ****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ensure department group exists] ******************************************
+ok: [localhost]
+
+TASK [Create joiner user account] **********************************************
+changed: [localhost]
+
+TASK [Add user to department group] ********************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[2026-08-02T20:58:42-04:00] JOINER complete
+[2026-08-02T20:58:42-04:00] Starting MOVER
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [JML Phase 2 - Mover] *****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Remove user from old department group] ***********************************
+changed: [localhost]
+
+TASK [Add user to new department group] ****************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[2026-08-02T20:58:49-04:00] MOVER complete
+[2026-08-02T20:58:49-04:00] Starting LEAVER
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [JML Phase 3 - Leaver] ****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Disable the user account] ************************************************
+changed: [localhost]
+
+TASK [Remove all group memberships] ********************************************
+changed: [localhost] => (item=it-support)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[2026-08-02T20:58:55-04:00] LEAVER complete - full lifecycle done

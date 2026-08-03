@@ -1,0 +1,24 @@
+
+---
+- name: JML Phase 3 - Leaver
+  hosts: localhost
+  connection: local
+  vars:
+    persona_user: jellis
+    persona_groups:
+      - it-support
+  tasks:
+    - name: Disable the user account
+      ansible.builtin.command: >
+        ipa user-disable {{ persona_user }}
+      register: disable_result
+      changed_when: disable_result.rc == 0
+      failed_when: disable_result.rc not in [0, 1]
+
+    - name: Remove all group memberships
+      ansible.builtin.command: >
+        ipa group-remove-member {{ item }} --users={{ persona_user }}
+      register: remove_result
+      changed_when: remove_result.rc == 0
+      failed_when: remove_result.rc not in [0, 1]
+      loop: "{{ persona_groups }}"
