@@ -4,6 +4,6 @@ Three hands-on IAM labs built while studying for Microsoft SC-300, documenting w
 
 | # | Lab | Status |
 |---|---|---|
-| 1 | [JML - Joiner/Mover/Leaver Automation](./jml-lab) | In Progress |
-| 2 | IGA - Identity Governance (Entra ID + midPoint) | Upcoming |
+| 1 | [JML - Joiner/Mover/Leaver Automation](./jml-lab) | Complete |
+| 2 | IGA - Identity Governance (Entra ID + midPoint) | In Progress |
 | 3 | PAM - Privileged Access Management (HashiCorp Vault) | Upcoming |
