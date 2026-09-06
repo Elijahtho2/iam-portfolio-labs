@@ -11,7 +11,7 @@
  
 ## Screenshot
 
-![midPoint resource connection test] (post10-midPoint-resource-connection-test-green-checks.png)
+![midPoint resource connection test](post10-midPoint-resource-connection-test-green-checks.png)
 
 
 ## Why it matters
