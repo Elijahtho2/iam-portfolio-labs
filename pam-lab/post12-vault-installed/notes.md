@@ -11,7 +11,7 @@
 ## Screenshots
 ![vault status — unsealed](post12-vault-status-unsealed.png)
 
-![Vault UI dashboard](post12-vault-ui-dashboard.png)
+![Vault UI dashboard](post12-vault-UI-dashboard.png)
 
 ## Why it matters
 Vault is the open-source PAM engine this whole lab is built on — the same category of
