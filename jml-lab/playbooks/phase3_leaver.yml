@@ -1,12 +1,15 @@
-
 ---
 - name: JML Phase 3 - Leaver
   hosts: localhost
   connection: local
+  vars_files:
+    - ../vars/vault_pam.yml
   vars:
     persona_user: jellis
     persona_groups:
       - it-support
+    vault_addr: "http://192.168.56.20:8200"
+    vault_ssh_prefix: "ssh/creds/gov-app-role"
   tasks:
     - name: Disable the user account
       ansible.builtin.command: >
@@ -22,3 +25,27 @@
       changed_when: remove_result.rc == 0
       failed_when: remove_result.rc not in [0, 1]
       loop: "{{ persona_groups }}"
+
+    - name: Revoke outstanding Vault SSH leases for gov-app-role (PAM offboarding)
+      ansible.builtin.uri:
+        url: "{{ vault_addr }}/v1/sys/leases/revoke-prefix/{{ vault_ssh_prefix }}"
+        method: PUT
+        headers:
+          X-Vault-Token: "{{ vault_automation_token }}"
+        status_code: 204
+      no_log: true
+      changed_when: true
+
+    - name: Verify no SSH leases remain under gov-app-role
+      ansible.builtin.uri:
+        url: "{{ vault_addr }}/v1/sys/leases/lookup/{{ vault_ssh_prefix }}?list=true"
+        method: GET
+        headers:
+          X-Vault-Token: "{{ vault_automation_token }}"
+        status_code: [200, 404]
+      register: lease_check
+      no_log: true
+
+    - name: Report lease status
+      ansible.builtin.debug:
+        msg: "{{ 'PASS: no outstanding gov-app-role SSH leases' if lease_check.status == 404 else 'FAIL: leases still present' }}"

@@ -30,7 +30,7 @@ fi
 echo "[$(date -Iseconds)] MOVER complete" >> $LOG
 
 echo "[$(date -Iseconds)] Starting LEAVER" >> $LOG
-ansible-playbook ~/iam-portfolio-labs/jml-lab/playbooks/phase3_leaver.yml >> $LOG 2>&1
+ansible-playbook ~/iam-portfolio-labs/jml-lab/playbooks/phase3_leaver.yml --vault-password-file ~/.vault_pass >> $LOG 2>&1
 if [ $? -ne 0 ]; then
   echo "[$(date -Iseconds)] LEAVER FAILED -- aborting" >> $LOG
   echo "LEAVER failed. Check $LOG for details." >&2
