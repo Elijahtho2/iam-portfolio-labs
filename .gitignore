@@ -1,2 +1,9 @@
 *.retry
 .vault_pass
+jml-lab/vars/vault_pam.yml
+*.unrecoverable
+# Secrets — never commit, even vault-encrypted
+jml-lab/vars/secrets.yml
+jml-lab/vars/entra_secrets.yml
+**/*secrets*.yml
+!**/*.example.yml
