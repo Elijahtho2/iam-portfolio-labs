@@ -1,3 +1,4 @@
+# Post 8 — Access Package (Entitlement Management)
 
 ## What I did
 - Created a catalog under ID Governance > Entitlement management > Catalogs,
