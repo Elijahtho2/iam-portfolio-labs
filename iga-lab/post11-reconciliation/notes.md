@@ -38,14 +38,12 @@ environments hit unfinished vendor features constantly, and the job isn't to
 get stuck, it's to recognize the defect, work around it, and keep the
 program moving.
 
-## Screenshot moment (Post 11): role assignment → reconciliation report →
-the association-type validation error (as evidence of the documented limitation)
+## Screenshots
 
-![ role assignment ](post11-role-assignment)
+![Role assignment for jellis](post11-role-assignment.png)
 
-![ group membership](post11-group-membership)
+![jellis group membership in FreeIPA](post11-FreeIPA-group-membership.png)
 
-![ reconciliation report ](post11-reconciliation-report)
+![Reconciliation report](post11-reconciliation-report.png)
 
-![ association validation error ](post11-association-validation-error)
-
+![Association type validation error (the documented limitation)](post11-association-validation-error.png)
