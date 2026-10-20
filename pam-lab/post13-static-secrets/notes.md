@@ -8,7 +8,9 @@
 - Confirmed the restricted token could read the stored secret but was denied when
   attempting to write to it — permission denied as expected.
 
-## Screenshot
+## Screenshots
+![Secret stored and read back from KV v2](post13-vault-kv-get.png)
+
 ![Restricted token denied write access](post13-vault-policy-denied.png)
 
 ## Why it matters
