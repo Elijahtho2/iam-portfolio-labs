@@ -15,29 +15,29 @@ Automates the Joiner-Mover-Leaver identity lifecycle against an on-prem FreeIPA 
 **Post 3: Joiner and least-privilege service account**
 
 `ansible-svc` can query users but is denied when it tries to create a host, showing the role is scoped to users and groups only.
-![ansible-svc allowed to read users, denied host-add](screenshots/post3-ansible-svc-least-privilege.png)
+![ansible-svc allowed to read users, denied host-add](screenshots/post3-ansible-svc-least-privilege.png.png)
 
 The Joiner creates `jellis` and adds them to `finance-analysts`.
-![New account confirmed in FreeIPA](screenshots/post3-joiner-new-account.png)
-![Joiner playbook run with no failures](screenshots/post3-joiner-clean-run.png)
+![New account confirmed in FreeIPA](screenshots/post3-joiner-new-account.png.png)
+![Joiner playbook run with no failures](screenshots/post3-joiner-clean-run.png.png)
 
 **Post 4: Mover, broken versus fixed**
 
 Broken: `jellis` holds both `finance-analysts` and `it-support`, the stale access a mover keeps when removal doesn't happen.
-![Mover broken state: user in both groups](screenshots/post4-mover-broken.png)
+![Mover broken state: user in both groups](screenshots/post4-mover-broken.png.png)
 
 Fixed: the old group is removed and the new group is added.
-![Mover fixed state: user moved to it-support only](screenshots/post4-mover-fixed.png)
+![Mover fixed state: user moved to it-support only](screenshots/post4-mover-fixed.png.png)
 
 **Post 5: Leaver**
 
 The account is disabled and its group memberships are removed.
-![Leaver disables the account and removes group membership](screenshots/post5-leaver-disable-remove.png)
+![Leaver disables the account and removes group membership](screenshots/post5-leaver-disable-remove.png.png)
 
 **Post 6: Full lifecycle**
 
 `run_full_lifecycle.sh` runs Joiner, Mover, and Leaver in sequence.
-![Full JML lifecycle run](screenshots/post6-full-lifecycle-run.png)
+![Full JML lifecycle run](screenshots/post6-full-lifecycle-run.png.png)
 
 ## Files
 - [DESIGN.md](DESIGN.md): scope, persona, and what each stage changes in FreeIPA
