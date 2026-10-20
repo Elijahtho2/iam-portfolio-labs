@@ -5,15 +5,15 @@
 - Review recurs monthly, reviewer is a designated test user (or self), with
   auto-apply enabled so decisions (e.g. "deny") automatically remove access
   when the review closes.
-- Navigated to myaccess.microsoft.com, signed in as a review [myself]
+- Navigated to myaccess.microsoft.com, signed in as the reviewer (myself)
 - Walked through one review cycle as the reviewer and recorded the result.
  
 ## Screenshot
-![Access review setup](post9-access-review-pt1.png)
+![Access review setup, part 1](post9-access-review-pt1.png)
 
-![Access review setup](post9-access-review-pt2.png)
+![Access review setup, part 2](post9-access-review-pt2.png)
 
-![Access review results](post9-access-review-overview.png)
+![Access review overview](post9-access-review-overview.png)
 
 ![Access review results](post9-access-review-results.png)
  
