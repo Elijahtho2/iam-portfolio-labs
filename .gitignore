@@ -7,3 +7,7 @@ jml-lab/vars/secrets.yml
 jml-lab/vars/entra_secrets.yml
 **/*secrets*.yml
 !**/*.example.yml
+
+   # Local run logs
+   *.log
+   !jml-lab/jml-automation.log
